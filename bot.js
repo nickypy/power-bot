@@ -7,10 +7,9 @@ const auth = require("./auth.js");
 
 const query = "SELECT text FROM powers ORDER BY random() LIMIT 1;";
 
-client.user.setActivity("getting more $power", { type: "STREAMING" });
-
 client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    client.user.setActivity("getting more $power", { type: "STREAMING" });
 });
 
 client.on("message", msg => {
@@ -22,4 +21,4 @@ client.on("message", msg => {
     }
 });
 
-client.login(auth["bot-key"]);
+client.login(auth["bot-token"]);
