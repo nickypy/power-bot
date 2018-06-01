@@ -4,6 +4,8 @@
   "description": "bot for useless superpowers",
   "main": "bot.js",
   "scripts": {
+    "start": "node bot.js",
+    "build": "node get-powers.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "nickypy",

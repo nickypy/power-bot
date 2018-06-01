@@ -20,16 +20,15 @@ const reddit = new snoowrap({
 
 reddit
     .getSubreddit(subreddit)
-    .getTop({ time: "new", limit: 1000 })
+    .getNew({ time: "new", limit: 1000 })
     .then(populateDB);
 
-// TODO set a timeout to prevent `too many connections` error
 function populateDB(posts) {
     posts.forEach(post => {
-        const query = "INSERT INTO powers VALUES ($1, $2);";
+        const query = "INSERT INTO powers VALUES ($1, $2) RETURNING *";
         connection
             .query(query, [post.id, post.title])
-            .then()
+            .then(res => console.log(res.rows[0]))
             .catch(e => console.error(e.stack));
     });
 }
